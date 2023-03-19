@@ -1,6 +1,6 @@
 {
-  "name": "react-native-unsigned-input",
-  "version": "0.1.0",
+  "name": "@tdduydev/react-native-unsigned-input",
+  "version": "0.0.1",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

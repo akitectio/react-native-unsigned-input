@@ -1,34 +1,34 @@
 #import <React/RCTViewManager.h>
+#import <UIKit/UIKit.h>
 
-@interface UnsignedInputViewManager : RCTViewManager
+@interface UnsignedInputViewManager : RCTViewManager <RCTUITextFieldDelegate>
+
 @end
 
 @implementation UnsignedInputViewManager
 
-RCT_EXPORT_MODULE(UnsignedInputView)
+RCT_EXPORT_MODULE()
 
-- (UIView *)view
-{
-  return [[UIView alloc] init];
+- (UIView *)view {
+  RCTTextField *textField = [[UITextField alloc] init];
+  textField.delegate = self;
+  return textField;
 }
 
-RCT_CUSTOM_VIEW_PROPERTY(color, NSString, UIView)
-{
-  [view setBackgroundColor:[self hexStringToColor:json]];
-}
+- (BOOL)textField:(UITextField *)textField shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+  // Kiểm tra xem văn bản được nhập có phải là ký tự Tiếng Anh không
+  NSCharacterSet *englishCharset = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+  NSCharacterSet *textCharset = [NSCharacterSet characterSetWithCharactersInString:text];
+  BOOL isEnglish = [englishCharset isSupersetOfSet:textCharset];
 
-- hexStringToColor:(NSString *)stringToConvert
-{
-  NSString *noHashString = [stringToConvert stringByReplacingOccurrencesOfString:@"#" withString:@""];
-  NSScanner *stringScanner = [NSScanner scannerWithString:noHashString];
-
-  unsigned hex;
-  if (![stringScanner scanHexInt:&hex]) return nil;
-  int r = (hex >> 16) & 0xFF;
-  int g = (hex >> 8) & 0xFF;
-  int b = (hex) & 0xFF;
-
-  return [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
+  // Nếu văn bản nhập vào là Tiếng Anh thì cho phép nhập
+  if (isEnglish) {
+    return YES;
+  }
+  // Ngược lại, loại bỏ các ký tự không phải Tiếng Anh khỏi TextInput
+  else {
+    return NO;
+  }
 }
 
 @end
