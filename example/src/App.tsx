@@ -1,12 +1,17 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
-import { UnsignedInputView } from 'react-native-unsigned-input';
+import { Alert, StyleSheet, View } from 'react-native';
+import { UnsignedInputView } from '@tdduydev/react-native-unsigned-input';
 
 export default function App() {
+  Alert.alert("onload")
   return (
     <View style={styles.container}>
-      <UnsignedInputView color="#32a852" style={styles.box} />
+      <UnsignedInputView
+              onChangeText={(text:any)=> {
+             console.log(text)
+              }}
+      style={styles.box} />
     </View>
   );
 }
@@ -18,8 +23,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    width: 60,
+    width: "80%",
     height: 60,
     marginVertical: 20,
+    backgroundColor:"red"
   },
 });

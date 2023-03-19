@@ -6,14 +6,35 @@ import {
 } from 'react-native';
 
 const LINKING_ERROR =
-  `The package 'react-native-unsigned-input' doesn't seem to be linked. Make sure: \n\n` +
+  `The package '@tdduydev/react-native-unsigned-input' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
 type UnsignedInputProps = {
-  color: string;
-  style: ViewStyle;
+  value?: string,
+  placeholder?: string,
+  autoCapitalize?: "none" | "sentences" | "words" | "characters",
+  autoCorrect?: boolean,
+  autoFocus?: boolean,
+  blurOnSubmit?: boolean,
+  caretHidden?: boolean,
+  contextMenuHidden?: boolean,
+  defaultValue?: string,
+  editable?: boolean,
+  keyboardType?: "default" | "email-address" | "numeric" | "phone-pad",
+  maxLength?: number,
+  multiline?: boolean,
+  onChangeText?: (text: string) => void,
+  passwordRules?: string,
+  placeholderTextColor?: string,
+  returnKeyType?: "done" | "go" | "next" | "search" | "send",
+  secureTextEntry?: boolean,
+  selection?: {start: number, end?: number},
+  selectTextOnFocus?: boolean,
+  spellCheck?: boolean,
+  style?: ViewStyle,
+  testID?: string,
 };
 
 const ComponentName = 'UnsignedInputView';

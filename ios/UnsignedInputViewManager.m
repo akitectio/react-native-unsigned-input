@@ -1,7 +1,11 @@
+#import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>
-#import <UIKit/UIKit.h>
+#import <React/RCTUIManager.h>
+#import <React/RCTBaseTextInputView.h>
+#import <React/RCTUITextField.h>
+#import <React/RCTBackedTextInputDelegateAdapter.h>
 
-@interface UnsignedInputViewManager : RCTViewManager <RCTUITextFieldDelegate>
+@interface UnsignedInputViewManager : RCTViewManager <UITextFieldDelegate>
 
 @end
 
@@ -10,25 +14,20 @@
 RCT_EXPORT_MODULE()
 
 - (UIView *)view {
-  RCTTextField *textField = [[UITextField alloc] init];
+  UITextField *textField = [[UITextField alloc] init];
+  textField.autocorrectionType = UITextAutocorrectionTypeNo;
+  textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
   textField.delegate = self;
   return textField;
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-  // Kiểm tra xem văn bản được nhập có phải là ký tự Tiếng Anh không
-  NSCharacterSet *englishCharset = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"];
-  NSCharacterSet *textCharset = [NSCharacterSet characterSetWithCharactersInString:text];
-  BOOL isEnglish = [englishCharset isSupersetOfSet:textCharset];
-
-  // Nếu văn bản nhập vào là Tiếng Anh thì cho phép nhập
-  if (isEnglish) {
-    return YES;
-  }
-  // Ngược lại, loại bỏ các ký tự không phải Tiếng Anh khỏi TextInput
-  else {
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    // Chuẩn hóa chuỗi nhập vào bằng cách loại bỏ dấu tiếng Việt và khoảng trắng
+    NSString *normalizedString = [[[string decomposedStringWithCanonicalMapping] stringByFoldingWithOptions:NSDiacriticInsensitiveSearch locale:[NSLocale currentLocale]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    // Thay thế chuỗi nhập vào bằng chuỗi đã được chuẩn hóa
+    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:normalizedString];
     return NO;
-  }
 }
 
 @end
+
