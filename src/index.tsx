@@ -5,6 +5,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
+
 const LINKING_ERROR =
   `The package '@tdduydev/react-native-unsigned-input' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
@@ -26,16 +27,16 @@ type UnsignedInputProps = {
   maxLength?: number,
   multiline?: boolean,
   onChangeText?: (text: string) => void,
+  onChange?: (text: string) => void,
   passwordRules?: string,
   placeholderTextColor?: string,
   returnKeyType?: "done" | "go" | "next" | "search" | "send",
   secureTextEntry?: boolean,
-  selection?: {start: number, end?: number},
-  selectTextOnFocus?: boolean,
-  spellCheck?: boolean,
   style?: ViewStyle,
   testID?: string,
+  ref?: any,
 };
+
 
 const ComponentName = 'UnsignedInputView';
 
@@ -45,3 +46,5 @@ export const UnsignedInputView =
     : () => {
         throw new Error(LINKING_ERROR);
       };
+
+
