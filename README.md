@@ -85,7 +85,88 @@ export default NativeInput;
 
 ```
 
-## Contributing
+
+<h2>Props</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>autoCapitalize</td>
+      <td>enum('none', 'sentences', 'words', 'characters')</td>
+      <td>Controls auto-capitalization of text. See <a href="https://reactnative.dev/docs/textinput#autocapitalize">https://reactnative.dev/docs/textinput#autocapitalize</a> for more details.</td>
+    </tr>
+    <tr>
+      <td>autoCorrect</td>
+      <td>bool</td>
+      <td>If false, disables auto-correct. Default is true.</td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>string</td>
+      <td>The color of the text input.</td>
+    </tr>
+    <tr>
+      <td>editable</td>
+      <td>bool</td>
+      <td>If false, text input is disabled. Default is true.</td>
+    </tr>
+    <tr>
+      <td>enablesReturnKeyAutomatically</td>
+      <td>bool</td>
+      <td>If true, disables return key when text input is empty. Default is false.</td>
+    </tr>
+    <tr>
+      <td>keyboardAppearance</td>
+      <td>enum('default', 'light', 'dark')</td>
+      <td>Controls the appearance of the keyboard. See <a href="https://reactnative.dev/docs/textinput#keyboardappearance">https://reactnative.dev/docs/textinput#keyboardappearance</a> for more details.</td>
+    </tr>
+    <tr>
+      <td>keyboardType</td>
+      <td>enum('default', 'email-address', 'numeric', 'phone-pad', 'ascii-capable', 'numbers-and-punctuation', 'url', 'number-pad', 'name-phone-pad', 'decimal-pad', 'twitter', 'web-search', 'visible-password')</td>
+      <td>Controls the keyboard type. See <a href="https://reactnative.dev/docs/textinput#keyboardtype">https://reactnative.dev/docs/textinput#keyboardtype</a> for more details.</td>
+    </tr>
+    <tr>
+      <td>maxLength</td>
+      <td>number</td>
+      <td>Limits the maximum number of characters that can be entered.</td>
+    </tr>
+    <tr>
+      <td>onBlur</td>
+      <td>function</td>
+      <td>Callback that is called when the text input loses focus.</td>
+    </tr>
+    <tr>
+      <td>onChange</td>
+      <td>function</td>
+      <td>Callback that is called when the text input's text changes.</td>
+    </tr>
+    <tr>
+      <td>onEndEditing</td>
+      <td>function</td>
+      <td>Callback that is called when editing is ended.</td>
+    </tr>
+    <tr>
+      <td>onFocus</td>
+      <td>function</td>
+      <td>Callback that is called when the text input is focused.</td>
+    </tr>
+    <tr>
+      <td>onSelectionChange</td>
+      <td>function</td>
+      <td>Callback that is
+
+</tr>
+</tbody>
+</table>
+
+Regenerate response
+
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
