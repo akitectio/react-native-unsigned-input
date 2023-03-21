@@ -4,20 +4,36 @@
 #import <React/RCTBaseTextInputView.h>
 #import <React/RCTUITextField.h>
 #import <React/RCTBackedTextInputDelegateAdapter.h>
-
-
+#import <React/RCTEventEmitter.h>
 #import <React/RCTViewManager.h>
 
 @interface UnsignedInputViewManager : RCTViewManager
 
+@property (nonatomic, strong) RCTEventEmitter *eventEmitter;
 
 @end
+
 
 
 @implementation UnsignedInputViewManager
 
 
 RCT_EXPORT_MODULE()
+
++ (BOOL)requiresMainQueueSetup
+{
+  return YES;
+}
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _eventEmitter = [[RCTEventEmitter alloc] init];
+    }
+    return self;
+}
 
 - (UIView *)view {
   UITextField *textField = [[UITextField alloc] init];
@@ -27,14 +43,23 @@ RCT_EXPORT_MODULE()
 
    // Enable secure text entry
    textField.secureTextEntry = NO;
-    
-    
+   textField.textColor = [UIColor whiteColor]; // thiết lập màu chữ Trắng
+   NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc] initWithString:@"Placeholder text"];
+   [placeholder addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, placeholder.length)];
+   textField.attributedPlaceholder = placeholder;
+   textField.returnKeyType = UIReturnKeyDone; // Set return key type to "Done"
+
   return textField;
 }
 
-RCT_EXPORT_VIEW_PROPERTY(value, NSString)
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder]; // Dismiss keyboard when return key is pressed
+  return YES;
+}
+
 - (void)setNativeValue:(NSString *)value forView:(UITextField *)textField {
-  textField.text = value;
+    textField.text = value;
 }
 
 
@@ -46,6 +71,7 @@ RCT_EXPORT_VIEW_PROPERTY(value, NSString)
 
     return NO;
 }
+
 
 
 RCT_EXPORT_METHOD(getValue:(nonnull NSNumber *)reactTag
@@ -62,10 +88,15 @@ RCT_EXPORT_METHOD(getValue:(nonnull NSNumber *)reactTag
   }];
 }
 
+// trong file Objective-C
+RCT_EXPORT_VIEW_PROPERTY(color, UIColor)
+- (void)setColor:(UIColor *)color forView:(UITextField *)textField {
+  textField.textColor = color;
+}
+
 // Property declarations for UnsignedInputViewManager
 RCT_EXPORT_VIEW_PROPERTY(autoCapitalize, UITextAutocapitalizationType)
 RCT_EXPORT_VIEW_PROPERTY(autoCorrect, BOOL)
-RCT_EXPORT_VIEW_PROPERTY(color, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(editable, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(enablesReturnKeyAutomatically, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(keyboardAppearance, UIKeyboardAppearance)
@@ -84,6 +115,8 @@ RCT_EXPORT_VIEW_PROPERTY(selectionColor, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(spellCheck, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(text, NSString)
 //RCT_EXPORT_VIEW_PROPERTY(onChangeText, RCTBubblingEventBlock)
+// Export placeholderTextColor property to React Native component
+RCT_EXPORT_VIEW_PROPERTY(placeholderTextColor, UIColor)
 
 @end
 
