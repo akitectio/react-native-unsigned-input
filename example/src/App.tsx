@@ -1,55 +1,37 @@
-import React, { forwardRef,useEffect } from 'react';
-import { requireNativeComponent, findNodeHandle, NativeModules, Text } from 'react-native';
+import React from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import InputBlurUnsigned from '@tdduydev/react-native-unsigned-input';
 
-const UnsignedInput = requireNativeComponent('UnsignedInputView');
+export default function App() {
+  const [text, setText] = React.useState('');
+  const inputRef = React.useRef();
 
-const { UnsignedInputViewManager } = NativeModules;
-
-const NativeInput = forwardRef((props, ref) => {
-  const inputRef = React.useRef(null);
-
-  useEffect(() => {
-
-    getValue ();
-    return () => {
-
-    }
-  }, [])
-
-  const getValue = async () => {
-    if (!inputRef.current) {
-      return Promise.reject('Input ref is not set');
-    }
-
-    const reactTag = findNodeHandle(inputRef.current);
-
-    try {
-      const text = await UnsignedInputViewManager.getValue(reactTag);
-      console.log('text',text)
-      return text;
-    } catch (error) {
-      return Promise.reject(error);
-    }
+  const getValue = () => {
+    const text = inputRef.current?.value;
+    console.log(`Current text: ${text}`);
   };
 
-
-  const handleOnChangeText = (text) => {
-    console.log("text",text)
-    if (props.onChangeText) {
-      props.onChangeText(text);
-    }
+  const onChangeText = (newText: any) => {
+    setText(newText);
+    console.log(`New text: ${newText}`);
   };
 
-  return <>
-  <UnsignedInput style={{
-    backgroundColor:"red",
-    height:200,
-    width:200
-   }} {...props}
-   text={"3123132123"}
-   ref={inputRef} onChangeText={handleOnChangeText} />
-   <Text>{props.value}</Text>
-  </>;
+  return (
+    <View style={styles.container}>
+      <InputBlurUnsigned
+        ref={inputRef}
+        onChangeText={onChangeText}
+        value={text}
+      />
+      <Button title="Get value" onPress={getValue} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
-
-export default NativeInput;
