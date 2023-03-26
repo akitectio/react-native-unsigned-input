@@ -1,6 +1,19 @@
 # react-native-unsigned-input
 
-react-native-unsigned-input is a React component that allows users to input data into a TextInput field with customizable options such as left and right icons. The following is the documentation for using this component.
+1. Normalizing the input string by removing Vietnamese diacritics and whitespaces:
+
+This algorithm takes an input string and performs the following steps:
+
+a. Decomposes the string into its canonical form using `decomposedStringWithCanonicalMapping`. This breaks the string into its base characters and their combining marks (diacritics).
+
+b. Folds the diacritic marks using 1stringByFoldingWithOptions:NSDiacriticInsensitiveSearch`. This step replaces characters with diacritics with their base forms, effectively removing the diacritic marks.
+
+c. Trims the whitespaces at the beginning and the end of the string using `stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]`. The result of this algorithm is a normalized string without diacritics and extra whitespaces.
+
+2.Replacing the input string in the text field with the normalized string:
+- This algorithm updates the text field's content by replacing the characters in a specified range with the normalized string. This is done using the `stringByReplacingCharactersInRange:range withString:normalizedString` method. As a result, the text field will display the normalized version of the input string, without diacritics and extra whitespaces. 
+
+In summary, these two algorithms work together to process a text input by removing Vietnamese diacritics and extra whitespaces, then updating the text field with the normalized string.
 
 ## Demo
 
