@@ -1,24 +1,14 @@
 # react-native-unsigned-input
 
+react-native-unsigned-input is a React component that allows users to input data into a TextInput field with customizable options such as left and right icons. The following is the documentation for using this component.
 
-In the `shouldChangeCharactersInRange` method of the `UITextFieldDelegate` protocol, we can normalize the input string by removing Vietnamese diacritical marks and trimming whitespace characters. Then, we replace the input string with the normalized string. This will effectively prevent accented characters from being entered into the text field.
+#Demo
 
-Here is the code for the `shouldChangeCharactersInRange` method:
-
-```objective-C
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    // Normalize the input string by removing Vietnamese diacritical marks and trimming whitespace characters
-    NSString *normalizedString = [[[string decomposedStringWithCanonicalMapping] stringByFoldingWithOptions:NSDiacriticInsensitiveSearch locale:[NSLocale currentLocale]] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    // Replace the input string with the normalized string
-    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:normalizedString];
-    return NO;
-}
-
-```
-
-By doing this, the text field will only accept input without diacritical marks or whitespace characters, effectively preventing input of accented characters.
+<img src="./iphone.gif"/>
 
 ## Installation
+
+Make sure to install the `@tdduydev/react-native-unsigned-input` package and link it with your project.
 
 ```sh
 npm install react-native-unsigned-input --save
@@ -26,67 +16,20 @@ npm install react-native-unsigned-input --save
 
 ## Usage
 
-```js
-import React, { forwardRef,useEffect } from 'react';
-import { requireNativeComponent, findNodeHandle, NativeModules, Text } from 'react-native';
+```jsx
+import InputBlurUnsigned from '@tdduydev/react-native-unsigned-input';
 
-const UnsignedInput = requireNativeComponent('UnsignedInputView');
-
-const { UnsignedInputViewManager } = NativeModules;
-
-const NativeInput = forwardRef((props, ref) => {
-  const inputRef = React.useRef(null);
-
-  useEffect(() => {
-
-    getValue ();
-    return () => {
-
-    }
-  }, [])
-
-  const getValue = async () => {
-    if (!inputRef.current) {
-      return Promise.reject('Input ref is not set');
-    }
-
-    const reactTag = findNodeHandle(inputRef.current);
-
-    try {
-      const text = await UnsignedInputViewManager.getValue(reactTag);
-      console.log('text',text)
-      return text;
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
-
-
-  const handleOnChangeText = (text) => {
-    console.log("text",text)
-    if (props.onChangeText) {
-      props.onChangeText(text);
-    }
-  };
-
-  return <>
-  <UnsignedInput style={{
-    backgroundColor:"red",
-    height:200,
-    width:200
-   }} {...props}
-   text={"3123132123"}
-   ref={inputRef} onChangeText={handleOnChangeText} />
-   <Text>{props.value}</Text>
-  </>;
-});
-
-export default NativeInput;
-
+// In your JSX
+<InputBlurUnsigned
+  placeholder="Enter text"
+  leftIcon={<YourLeftIcon />}
+  rightIcon={<YourRightIcon />}
+  onChangeText={(text) => console.log(text)}
+/>;
 ```
 
+#Props
 
-<h2>Props</h2>
 <table>
   <thead>
     <tr>
@@ -97,76 +40,108 @@ export default NativeInput;
   </thead>
   <tbody>
     <tr>
-      <td>autoCapitalize</td>
-      <td>enum('none', 'sentences', 'words', 'characters')</td>
-      <td>Controls auto-capitalization of text. See <a href="https://reactnative.dev/docs/textinput#autocapitalize">https://reactnative.dev/docs/textinput#autocapitalize</a> for more details.</td>
+      <td>secureTextEntry</td>
+      <td>Boolean</td>
+      <td>If set to true, the text entered will be obscured, typically used for password fields.</td>
     </tr>
     <tr>
-      <td>autoCorrect</td>
-      <td>bool</td>
-      <td>If false, disables auto-correct. Default is true.</td>
+      <td>style</td>
+      <td>Object</td>
+      <td>Additional styles to be applied to the TextInput component.</td>
     </tr>
     <tr>
-      <td>color</td>
-      <td>string</td>
-      <td>The color of the text input.</td>
+      <td>multiline</td>
+      <td>Boolean</td>
+      <td>If set to true, the TextInput will allow multiple lines of text.</td>
     </tr>
     <tr>
-      <td>editable</td>
-      <td>bool</td>
-      <td>If false, text input is disabled. Default is true.</td>
+      <td>rightIcon</td>
+      <td>ReactElement</td>
+      <td>A React element to be displayed as the right icon within the TextInput field.</td>
     </tr>
     <tr>
-      <td>enablesReturnKeyAutomatically</td>
-      <td>bool</td>
-      <td>If true, disables return key when text input is empty. Default is false.</td>
+      <td>leftIcon</td>
+      <td>ReactElement</td>
+      <td>A React element to be displayed as the left icon within the TextInput field.</td>
     </tr>
     <tr>
-      <td>keyboardAppearance</td>
-      <td>enum('default', 'light', 'dark')</td>
-      <td>Controls the appearance of the keyboard. See <a href="https://reactnative.dev/docs/textinput#keyboardappearance">https://reactnative.dev/docs/textinput#keyboardappearance</a> for more details.</td>
+      <td>rightIconContainerStyle</td>
+      <td>Object</td>
+      <td>Additional styles to be applied to the right icon container.</td>
     </tr>
     <tr>
-      <td>keyboardType</td>
-      <td>enum('default', 'email-address', 'numeric', 'phone-pad', 'ascii-capable', 'numbers-and-punctuation', 'url', 'number-pad', 'name-phone-pad', 'decimal-pad', 'twitter', 'web-search', 'visible-password')</td>
-      <td>Controls the keyboard type. See <a href="https://reactnative.dev/docs/textinput#keyboardtype">https://reactnative.dev/docs/textinput#keyboardtype</a> for more details.</td>
+      <td>leftIconContainerStyle</td>
+      <td>Object</td>
+      <td>Additional styles to be applied to the left icon container.</td>
     </tr>
     <tr>
-      <td>maxLength</td>
-      <td>number</td>
-      <td>Limits the maximum number of characters that can be entered.</td>
+      <td>value</td>
+      <td>String</td>
+      <td>The value of the TextInput field.</td>
     </tr>
     <tr>
-      <td>onBlur</td>
-      <td>function</td>
-      <td>Callback that is called when the text input loses focus.</td>
+      <td>defaultValue</td>
+      <td>String</td>
+      <td>The initial value of the TextInput field.</td>
     </tr>
     <tr>
-      <td>onChange</td>
-      <td>function</td>
-      <td>Callback that is called when the text input's text changes.</td>
+      <td>onChangeText</td>
+      <td>Function</td>
+      <td>A function to be called when the text changes in the TextInput field.</td>
     </tr>
     <tr>
-      <td>onEndEditing</td>
-      <td>function</td>
-      <td>Callback that is called when editing is ended.</td>
+      <td>placeholder</td>
+      <td>String</td>
+      <td>A placeholder string to be displayed when the TextInput field is empty.</td>
+    </tr>
+    <tr>
+      <td>placeholderTextColor</td>
+      <td>String</td>
+      <td>The color of the placeholder text.</td>
+    </tr>
+    <tr>
+      <td>onGetValue</td>
+      <td>Function</td>
+      <td>A function to be called when the value of the TextInput field is retrieved.</td>
     </tr>
     <tr>
       <td>onFocus</td>
-      <td>function</td>
-      <td>Callback that is called when the text input is focused.</td>
+      <td>Function</td>
+      <td>A function to be called when the TextInput field receives focus.</td>
     </tr>
     <tr>
-      <td>onSelectionChange</td>
-      <td>function</td>
-      <td>Callback that is
-
-</tr>
-</tbody>
+      <td>onBlur</td>
+      <td>Function</td>
+      <td>A function to be called when the TextInput field loses focus.</td>
+    </tr>
+    <tr>
+      <td>...rest</td>
+      <td>Any</td>
+      <td>Additional props to be passed down to the TextInput component.</td>
+    </tr>
+  </tbody>
 </table>
 
-Regenerate response
+#Styling
 
+The component has built-in styling for the TextInput and its container. To customize the styling, use the `style`, `rightIconContainerStyle`, and `leftIconContainerStyle` props as needed.
+
+#Methods
+
+`focus`: This method can be called to focus the TextInput field programmatically. To use it, create a ref for the component and call the `focus` method on the ref:
+
+```jsx
+const inputRef = useRef();
+
+// Somewhere in your code
+inputRef.current.focus();
+
+// In your JSX
+<InputBlurUnsigned ref={inputRef} ... />
+
+```
+
+Regenerate response
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
@@ -175,4 +150,3 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 MIT
 
 ---
-
