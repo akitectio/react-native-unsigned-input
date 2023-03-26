@@ -4,11 +4,11 @@
 
 This algorithm takes an input string and performs the following steps:
 
-a. Decomposes the string into its canonical form using `decomposedStringWithCanonicalMapping`. This breaks the string into its base characters and their combining marks (diacritics).
+  a. Decomposes the string into its canonical form using `decomposedStringWithCanonicalMapping`. This breaks the string into its base characters and their combining marks (diacritics).
 
-b. Folds the diacritic marks using 1stringByFoldingWithOptions:NSDiacriticInsensitiveSearch`. This step replaces characters with diacritics with their base forms, effectively removing the diacritic marks.
+  b. Folds the diacritic marks using 1stringByFoldingWithOptions:NSDiacriticInsensitiveSearch`. This step replaces characters with diacritics with their base forms, effectively removing the diacritic marks.
 
-c. Trims the whitespaces at the beginning and the end of the string using `stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]`. The result of this algorithm is a normalized string without diacritics and extra whitespaces.
+  c. Trims the whitespaces at the beginning and the end of the string using `stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]`. The result of this algorithm is a normalized string without diacritics and extra whitespaces.
 
 2.Replacing the input string in the text field with the normalized string:
 - This algorithm updates the text field's content by replacing the characters in a specified range with the normalized string. This is done using the `stringByReplacingCharactersInRange:range withString:normalizedString` method. As a result, the text field will display the normalized version of the input string, without diacritics and extra whitespaces. 
@@ -17,7 +17,7 @@ In summary, these two algorithms work together to process a text input by removi
 
 ## Demo
 
-<img src="./iphone.gif" height="40%"/>
+<img src="./iphone.gif" height="250px"/>
 
 ## Installation
 
