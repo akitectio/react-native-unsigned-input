@@ -1,7 +1,44 @@
-import React, { useRef, useImperativeHandle, forwardRef } from 'react';
-import { StyleSheet, View, requireNativeComponent } from 'react-native';
+import React, {
+  useRef,
+  useImperativeHandle,
+  forwardRef,
+  useEffect,
+} from 'react';
+import {
+  StyleSheet,
+  View,
+  Platform,
+  NativeModules,
+  TextInput,
+  findNodeHandle,
+} from 'react-native';
 
-const UnsignedInput = requireNativeComponent('UnsignedInputView');
+const LINKING_ERROR =
+  `The package '"@tdduydev/react-native-unsigned-input' doesn't seem to be linked. Make sure: \n\n` +
+  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
+  '- You rebuilt the app after installing the package\n' +
+  '- You are not using Expo Go\n';
+
+const ReactNativeUnsignedInput = NativeModules.ReactNativeUnsignedInput
+  ? NativeModules.ReactNativeUnsignedInput
+  : new Proxy(
+    {},
+    {
+      get() {
+        throw new Error(LINKING_ERROR);
+      },
+    }
+  );
+
+/**
+ * Apply mask to TextInput
+ *
+ * @param reactNode {number}
+ * @param options {MaskOptions}
+ */
+export function applyMask(reactNode) {
+  ReactNativeUnsignedInput.applyMask(reactNode);
+}
 
 const InputBlurUnsigned = forwardRef(
   (
@@ -33,6 +70,14 @@ const InputBlurUnsigned = forwardRef(
       },
     }));
 
+    useEffect(() => {
+      const reactNode = findNodeHandle(inputRef.current);
+      if (!reactNode) {
+        return;
+      }
+      applyMask(reactNode);
+    }, []);
+
     return (
       <View style={styles.viewInput}>
         {leftIcon && (
@@ -45,7 +90,7 @@ const InputBlurUnsigned = forwardRef(
             {leftIcon}
           </View>
         )}
-        <UnsignedInput
+        <TextInput
           {...rest}
           ref={inputRef}
           placeholder={placeholder}

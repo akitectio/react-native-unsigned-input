@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A04737429D08BFC00905AA2 /* UnsignedInputViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A04737329D08BFC00905AA2 /* UnsignedInputViewManager.m */; };
+		3A0B5DC829D09C6E00658781 /* ReactNativeUnsignedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0B5DC729D09C6E00658781 /* ReactNativeUnsignedInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,9 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libUnsignedInput.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUnsignedInput.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A04737329D08BFC00905AA2 /* UnsignedInputViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnsignedInputViewManager.m; sourceTree = "<group>"; };
+		3A0B5DC329D09AAA00658781 /* ReactNativeUnsignedInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactNativeUnsignedInput.h; sourceTree = "<group>"; };
+		3A0B5DC429D09AD400658781 /* UnsignedInput-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnsignedInput-Bridging-Header.h"; sourceTree = "<group>"; };
+		3A0B5DC729D09C6E00658781 /* ReactNativeUnsignedInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactNativeUnsignedInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,8 +51,10 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				3A04737329D08BFC00905AA2 /* UnsignedInputViewManager.m */,
+				3A0B5DC729D09C6E00658781 /* ReactNativeUnsignedInput.swift */,
+				3A0B5DC329D09AAA00658781 /* ReactNativeUnsignedInput.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				3A0B5DC429D09AD400658781 /* UnsignedInput-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +89,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -111,7 +116,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A04737429D08BFC00905AA2 /* UnsignedInputViewManager.m in Sources */,
+				3A0B5DC829D09C6E00658781 /* ReactNativeUnsignedInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,32 +221,41 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = UnsignedInput;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "UnsignedInput-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = UnsignedInput;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "UnsignedInput-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

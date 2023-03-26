@@ -1,11 +1,15 @@
 buildscript {
-  repositories {
+  ext {
+      kotlin_version = '1.8.20-RC2'
+  }
+    repositories {
     google()
     mavenCentral()
   }
 
   dependencies {
     classpath "com.android.tools.build:gradle:7.2.1"
+      classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
 }
 
@@ -14,6 +18,7 @@ def isNewArchitectureEnabled() {
 }
 
 apply plugin: "com.android.library"
+apply plugin: 'org.jetbrains.kotlin.android'
 
 
 def appProject = rootProject.allprojects.find { it.plugins.hasPlugin('com.android.application') }

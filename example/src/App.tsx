@@ -16,16 +16,14 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [secure, setSecure] = useState(true);
 
-  const handleUsernameChange = (event: any) => {
-    const value = event.nativeEvent.text;
+  const handleUsernameChange = (value: any) => {
     console.log('handlePasswordChange', value);
     setUsername(value);
   };
 
-  const handlePasswordChange = (event: any) => {
-    const value = event.nativeEvent.text;
+  const handlePasswordChange = (value: any) => {
     console.log('handlePasswordChange', value);
-    setUsername(value);
+    setPassword(value);
   };
 
   const handleLogin = () => {
