@@ -1,3 +1,11 @@
+//
+//  UnsignedInputViewManager.m
+//  UnsignedInput
+//
+//  Created by DUY TRAN on 26/03/2023.
+//  Copyright © 2023 Facebook. All rights reserved.
+//
+
 #import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>
 #import <React/RCTUIManager.h>
@@ -119,6 +127,3 @@ RCT_EXPORT_VIEW_PROPERTY(text, NSString)
 RCT_EXPORT_VIEW_PROPERTY(placeholderTextColor, UIColor)
 
 @end
-
-
-

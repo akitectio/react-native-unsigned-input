@@ -414,7 +414,7 @@ PODS:
     - React-logger (= 0.71.4)
     - React-perflogger (= 0.71.4)
   - SocketRocket (0.6.0)
-  - tdduydev-react-native-unsigned-input (0.0.2):
+  - tdduydev-react-native-unsigned-input (0.0.3):
     - React-Core
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -620,7 +620,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 8fa50b38df6b992c76537993a2b0553d3b088004
   ReactCommon: b49a4b00ca6d181ff74b17c12b2d59ac4add0bde
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
-  tdduydev-react-native-unsigned-input: fa1afedbad7d9aae511bd7f77e56ccc998583859
+  tdduydev-react-native-unsigned-input: 13ca03283d95ba2b13b9082559b79bb99d678ecd
   Yoga: 79dd7410de6f8ad73a77c868d3d368843f0c93e0
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

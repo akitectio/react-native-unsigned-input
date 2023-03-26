@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A7E7E4C29C791DD000E36D9 /* UnsignedInputViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E7E4B29C791DD000E36D9 /* UnsignedInputViewManager.m */; };
+		3A04737429D08BFC00905AA2 /* UnsignedInputViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A04737329D08BFC00905AA2 /* UnsignedInputViewManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libUnsignedInput.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUnsignedInput.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A7E7E4B29C791DD000E36D9 /* UnsignedInputViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnsignedInputViewManager.m; sourceTree = "<group>"; };
+		3A04737329D08BFC00905AA2 /* UnsignedInputViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnsignedInputViewManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				3A7E7E4B29C791DD000E36D9 /* UnsignedInputViewManager.m */,
+				3A04737329D08BFC00905AA2 /* UnsignedInputViewManager.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A7E7E4C29C791DD000E36D9 /* UnsignedInputViewManager.m in Sources */,
+				3A04737429D08BFC00905AA2 /* UnsignedInputViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
