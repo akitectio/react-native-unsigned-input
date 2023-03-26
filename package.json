@@ -1,6 +1,6 @@
 {
   "name": "@tdduydev/react-native-unsigned-input",
-  "version": "0.4",
+  "version": "0.0.4",
   "description": "Preventing Vietnamese accented characters from being inputted.",
   "private": false,
   "main": "lib/commonjs/index",
