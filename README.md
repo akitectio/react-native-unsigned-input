@@ -2,9 +2,9 @@
 
 react-native-unsigned-input is a React component that allows users to input data into a TextInput field with customizable options such as left and right icons. The following is the documentation for using this component.
 
-#Demo
+## Demo
 
-<img src="./iphone.gif"/>
+<img src="./iphone.gif" height="40%"/>
 
 ## Installation
 
@@ -28,7 +28,7 @@ import InputBlurUnsigned from '@tdduydev/react-native-unsigned-input';
 />;
 ```
 
-#Props
+## Props
 
 <table>
   <thead>
@@ -126,7 +126,7 @@ import InputBlurUnsigned from '@tdduydev/react-native-unsigned-input';
 
 The component has built-in styling for the TextInput and its container. To customize the styling, use the `style`, `rightIconContainerStyle`, and `leftIconContainerStyle` props as needed.
 
-#Methods
+## Methods
 
 `focus`: This method can be called to focus the TextInput field programmatically. To use it, create a ref for the component and call the `focus` method on the ref:
 
