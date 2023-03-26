@@ -54,7 +54,7 @@ const LoginScreen = () => {
             placeholder="Password"
             value={password}
             onChangeText={handlePasswordChange}
-            secureTextEntry={true}
+            secureTextEntry={secure}
             style={styles.input}
             spellCheck={true}
             leftIcon={
