@@ -22,8 +22,6 @@
 
 @end
 
-// Add your MoneyMaskDelegate and Mask class imports here
-
 @interface ReactNativeUnsignedInput : NSObject <RCTBridgeModule>
 
 @property (nonatomic, strong) RCTBridge *bridge;
