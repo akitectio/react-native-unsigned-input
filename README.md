@@ -138,7 +138,6 @@ import InputBlurUnsigned from '@tdduydev/react-native-unsigned-input';
     <tr>
       <td>backgroundInput</td>
       <td>ReactElement</td>
-      <td>No</td>
       <td>A React Element used as a background input for iOS platform</td>
     </tr>
   </tbody>

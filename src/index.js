@@ -82,7 +82,7 @@ const InputBlurUnsigned = forwardRef(
 
     return (
       <View style={styles.viewInput}>
-        {Platform.OS === 'ios' && backgroundInput ? backgroundInput : null}
+        {backgroundInput ? backgroundInput : null}
         {leftIcon && (
           <View
             style={StyleSheet.flatten([
@@ -113,7 +113,7 @@ const InputBlurUnsigned = forwardRef(
           onBlur={onBlur}
           onFocus={onFocus}
         />
-        {Platform.OS === 'ios' && backgroundInput ? backgroundInput : null}
+        {backgroundInput ? backgroundInput : null}
         {rightIcon && (
           <View
             style={StyleSheet.flatten([
