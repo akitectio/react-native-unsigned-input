@@ -25,7 +25,6 @@
 @interface ReactNativeUnsignedInput : NSObject <RCTBridgeModule>
 
 @property (nonatomic, strong) RCTBridge *bridge;
-@property (nonatomic, strong) NSMutableDictionary<NSString *, ReactNativeUnsignedDelegate *> *masks;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, TextFieldAdapter *> *listeners;
 
 @end
@@ -41,7 +40,6 @@ RCT_EXPORT_MODULE()
 - (instancetype)init {
   self = [super init];
   if (self) {
-    _masks = [[NSMutableDictionary alloc] init];
     _listeners = [[NSMutableDictionary alloc] init];
   }
   return self;
@@ -76,7 +74,6 @@ RCT_EXPORT_METHOD(applyUnsigned:(nonnull NSNumber *)reactNode) {
     }];
 
     self.listeners[key] = listener;
-    self.masks[key] = delegate;
     textInput.delegate = delegate;
   }];
 }

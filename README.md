@@ -8,7 +8,7 @@
 
   a. Decomposes the string into its canonical form using `decomposedStringWithCanonicalMapping`. This breaks the string into its base characters and their combining marks (diacritics).
 
-  b. Folds the diacritic marks using 1stringByFoldingWithOptions:NSDiacriticInsensitiveSearch`. This step replaces characters with diacritics with their base forms, effectively removing the diacritic marks.
+  b. Folds the diacritic marks using `stringByFoldingWithOptions:NSDiacriticInsensitiveSearch`. This step replaces characters with diacritics with their base forms, effectively removing the diacritic marks.
 
   c. Trims the whitespaces at the beginning and the end of the string using `stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]`. The result of this algorithm is a normalized string without diacritics and extra whitespaces.
 
@@ -163,6 +163,111 @@ inputRef.current.focus();
 <InputBlurUnsigned ref={inputRef} ... />
 
 ```
+
+# Supported Languages 🌐
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Flag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Vietnamese</td>
+      <td>🇻🇳</td>
+    </tr>
+    <tr>
+      <td>French</td>
+      <td>🇫🇷</td>
+    </tr>
+    <tr>
+      <td>Spanish</td>
+      <td>🇪🇸</td>
+    </tr>
+    <tr>
+      <td>Portuguese</td>
+      <td>🇵🇹 🇧🇷</td>
+    </tr>
+    <tr>
+      <td>German</td>
+      <td>🇩🇪</td>
+    </tr>
+    <tr>
+      <td>Swedish</td>
+      <td>🇸🇪</td>
+    </tr>
+    <tr>
+      <td>Norwegian</td>
+      <td>🇳🇴</td>
+    </tr>
+    <tr>
+      <td>Danish</td>
+      <td>🇩🇰</td>
+    </tr>
+    <tr>
+      <td>Dutch</td>
+      <td>🇳🇱</td>
+    </tr>
+    <tr>
+      <td>Polish</td>
+      <td>🇵🇱</td>
+    </tr>
+    <tr>
+      <td>Hungarian</td>
+      <td>🇭🇺</td>
+    </tr>
+    <tr>
+      <td>Czech</td>
+      <td>🇨🇿</td>
+    </tr>
+    <tr>
+      <td>Slovak</td>
+      <td>🇸🇰</td>
+    </tr>
+    <tr>
+      <td>Slovenian</td>
+      <td>🇸🇮</td>
+    </tr>
+    <tr>
+      <td>Croatian</td>
+      <td>🇭🇷</td>
+    </tr>
+    <tr>
+      <td>Romanian</td>
+      <td>🇷🇴</td>
+    </tr>
+    <tr>
+      <td>Icelandic</td>
+      <td>🇮🇸</td>
+    </tr>
+    <tr>
+      <td>Finnish</td>
+      <td>🇫🇮</td>
+    </tr>
+    <tr>
+      <td>Lithuanian</td>
+      <td>🇱🇹</td>
+    </tr>
+    <tr>
+      <td>Latvian</td>
+      <td>🇱🇻</td>
+    </tr>
+    <tr>
+      <td>Estonian</td>
+      <td>🇪🇪</td>
+    </tr>
+    <tr>
+      <td>Turkish</td>
+      <td>🇹🇷</td>
+    </tr>
+    <tr>
+      <td>Filipino</td>
+      <td>🇵🇭</td>
+    </tr>
+  </tbody>
+</table>
 
 Regenerate response
 

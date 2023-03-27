@@ -38,15 +38,6 @@ class ReactNativeUnsignedInputModule(private val reactContext: ReactApplicationC
     listeners[getKey(reactNode)] = null
   }
 
-  @ReactMethod
-  fun mask(value: String, promise: Promise) {
-//    promise.resolve()
-  }
-
-  @ReactMethod
-  fun unmask(value: String,promise: Promise) {
-//    promise.resolve()
-  }
 
   private fun getKey(reactNode: Int): String {
     return reactNode.toString()
