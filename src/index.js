@@ -31,13 +31,13 @@ const ReactNativeUnsignedInput = NativeModules.ReactNativeUnsignedInput
   );
 
 /**
- * Apply mask to TextInput
+ * Apply Unsigned to TextInput
  *
  * @param reactNode {number}
- * @param options {MaskOptions}
+ *
  */
-export function applyMask(reactNode) {
-  ReactNativeUnsignedInput.applyMask(reactNode);
+export function applyUnsigned(reactNode) {
+  ReactNativeUnsignedInput.applyUnsigned(reactNode);
 }
 
 const InputBlurUnsigned = forwardRef(
@@ -58,6 +58,7 @@ const InputBlurUnsigned = forwardRef(
       onGetValue,
       onFocus,
       onBlur,
+      backgroundInput,
       ...rest
     },
     ref
@@ -75,11 +76,13 @@ const InputBlurUnsigned = forwardRef(
       if (!reactNode) {
         return;
       }
-      applyMask(reactNode);
-    }, []);
+      applyUnsigned(reactNode);
+    }, [])
+
 
     return (
       <View style={styles.viewInput}>
+        {Platform.OS === 'ios' && backgroundInput ? backgroundInput : null}
         {leftIcon && (
           <View
             style={StyleSheet.flatten([
@@ -98,6 +101,7 @@ const InputBlurUnsigned = forwardRef(
           secureTextEntry={secureTextEntry}
           style={[
             styles.input,
+            // eslint-disable-next-line react-native/no-inline-styles
             !multiline && {
               height: 46,
             },
@@ -109,6 +113,7 @@ const InputBlurUnsigned = forwardRef(
           onBlur={onBlur}
           onFocus={onFocus}
         />
+        {Platform.OS === 'ios' && backgroundInput ? backgroundInput : null}
         {rightIcon && (
           <View
             style={StyleSheet.flatten([
@@ -129,13 +134,15 @@ export default InputBlurUnsigned;
 const styles = StyleSheet.create({
   BlurView: {
     position: 'absolute',
-    zIndex: 2,
     top: 0,
     left: 0,
     bottom: 0,
     right: 0,
     height: 45,
-    opacity: 0.9,
+    flex: 1,
+    backgroundColor: 'white',
+    zIndex: 1,
+    opacity: 0.3,
   },
   LinearGradient: {
     zIndex: 1,
@@ -158,14 +165,10 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    // paddingHorizontal: padding.large,
-    // paddingRight: padding.large,
-    // paddingLeft: padding.large,
     position: 'relative',
-    // color: "#ffffff",
+    color: '#ffffff',
     zIndex: 3,
     fontSize: 20,
-    // backgroundColor: "red"
   },
   viewIcon: {
     marginRight: 16,

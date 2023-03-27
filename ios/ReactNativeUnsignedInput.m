@@ -53,9 +53,9 @@ RCT_EXPORT_MODULE()
   return self.bridge.uiManager.methodQueue;
 }
 
-RCT_EXPORT_METHOD(applyMask:(nonnull NSNumber *)reactNode) {
+RCT_EXPORT_METHOD(applyUnsigned:(nonnull NSNumber *)reactNode) {
   [self.bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *, UIView *> *viewRegistry) {
-    RCTBaseTextInputView *view = viewRegistry[reactNode];
+    RCTBaseTextInputView *view = (RCTBaseTextInputView *)viewRegistry[reactNode];
     if (![view isKindOfClass:[RCTBaseTextInputView class]]) {
       return;
     }

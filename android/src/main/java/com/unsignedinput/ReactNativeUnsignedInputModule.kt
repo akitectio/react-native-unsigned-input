@@ -20,7 +20,7 @@ class ReactNativeUnsignedInputModule(private val reactContext: ReactApplicationC
   private val listeners = hashMapOf<String, TextWatcher?>()
 
   @ReactMethod
-  fun applyMask(reactNode: Int) {
+  fun applyUnsigned(reactNode: Int) {
     val uiManager = reactContext.getNativeModule(UIManagerModule::class.java)!!
 
     uiManager.addUIBlock { viewRegistry ->

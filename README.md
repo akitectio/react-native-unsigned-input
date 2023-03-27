@@ -1,8 +1,10 @@
+[![NPM](https://img.shields.io/npm/v/@tdduydev/react-native-unsigned-input.svg?logo=npm)](https://www.npmjs.com/package/@tdduydev/react-native-unsigned-input) [![Known Vulnerabilities](https://snyk.io/test/github/tdduydev/react-native-unsigned-input/badge.svg)](https://snyk.io/test/github/tdduydev/react-native-unsigned-input)
+
 # react-native-unsigned-input
 
 1. Normalizing the input string by removing Vietnamese diacritics and whitespaces:
 
-This algorithm takes an input string and performs the following steps:
+- This algorithm takes an input string and performs the following steps:
 
   a. Decomposes the string into its canonical form using `decomposedStringWithCanonicalMapping`. This breaks the string into its base characters and their combining marks (diacritics).
 
@@ -10,14 +12,15 @@ This algorithm takes an input string and performs the following steps:
 
   c. Trims the whitespaces at the beginning and the end of the string using `stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]`. The result of this algorithm is a normalized string without diacritics and extra whitespaces.
 
-2.Replacing the input string in the text field with the normalized string:
-- This algorithm updates the text field's content by replacing the characters in a specified range with the normalized string. This is done using the `stringByReplacingCharactersInRange:range withString:normalizedString` method. As a result, the text field will display the normalized version of the input string, without diacritics and extra whitespaces. 
+2. Replacing the input string in the text field with the normalized string:
+
+- This algorithm updates the text field's content by replacing the characters in a specified range with the normalized string. This is done using the `stringByReplacingCharactersInRange:range withString:normalizedString` method. As a result, the text field will display the normalized version of the input string, without diacritics and extra whitespaces.
 
 In summary, these two algorithms work together to process a text input by removing Vietnamese diacritics and extra whitespaces, then updating the text field with the normalized string.
 
 ## Demo
 
-<img src="./iphone.gif" height="250px"/>
+<img src="./iphone.gif" height="500px"/>
 
 ## Installation
 
@@ -132,12 +135,20 @@ import InputBlurUnsigned from '@tdduydev/react-native-unsigned-input';
       <td>Any</td>
       <td>Additional props to be passed down to the TextInput component.</td>
     </tr>
+    <tr>
+      <td>backgroundInput</td>
+      <td>ReactElement</td>
+      <td>No</td>
+      <td>A React Element used as a background input for iOS platform</td>
+    </tr>
   </tbody>
 </table>
 
-#Styling
+# Styling
 
 The component has built-in styling for the TextInput and its container. To customize the styling, use the `style`, `rightIconContainerStyle`, and `leftIconContainerStyle` props as needed.
+
+The `backgroundInput` prop is used to provide a custom background input for the iOS platform. This prop should be a React Element, and it is optional. If provided, the background input element will be rendered behind the main `TextInput` component on iOS devices. This can be useful for adding a custom appearance or styling to the input field on iOS.
 
 ## Methods
 
@@ -163,3 +174,11 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 MIT
 
 ---
+
+# Donate
+
+A cup of coffee helps me have more motivation to develop more useful plugins, Thank you
+
+[![Buy me a coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/tdduydev)
+
+[![Donate via PayPal](https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png)](https://paypal.me/tduydev)

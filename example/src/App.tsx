@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import InputBlurUnsigned from '@tdduydev/react-native-unsigned-input';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import LinearGradient from 'react-native-linear-gradient';
 
 let ICON_SIZE = 20;
 const LoginScreen = () => {
@@ -47,6 +48,14 @@ const LoginScreen = () => {
                 <Icon name="user" size={ICON_SIZE} color="blue" />
               </View>
             }
+            backgroundInput={
+              <View style={styles.BlurView}>
+                <LinearGradient
+                  colors={['rgba(0,0,0,0.1)', 'rgba(0,0,0,0.4)']}
+                  style={styles.LinearGradient}
+                ></LinearGradient>
+              </View>
+            }
           />
         </View>
         <View style={styles.loginForm}>
@@ -60,6 +69,14 @@ const LoginScreen = () => {
             leftIcon={
               <View style={styles.iconLeft}>
                 <Icon name="key" size={ICON_SIZE} color="#900" />
+              </View>
+            }
+            backgroundInput={
+              <View style={styles.BlurView}>
+                <LinearGradient
+                  colors={['rgba(0,0,0,0.1)', 'rgba(0,0,0,0.4)']}
+                  style={styles.LinearGradient}
+                ></LinearGradient>
               </View>
             }
             onFocus={() => {}}
@@ -96,7 +113,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   loginForm: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    // backgroundColor: 'rgba(255, 255, 255, 0.8)',
     padding: 20,
     borderRadius: 10,
     margin: 20,
@@ -117,6 +134,28 @@ const styles = StyleSheet.create({
   iconRight: {
     flexDirection: 'row',
     marginRight: 10,
+  },
+  LinearGradient: {
+    zIndex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    height: 45,
+    opacity: 0.6,
+  },
+  BlurView: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    height: 45,
+    flex: 1,
+    backgroundColor: 'white',
+    zIndex: 1,
+    opacity: 0.3,
   },
 });
 
