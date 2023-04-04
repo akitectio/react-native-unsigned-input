@@ -77,8 +77,20 @@ const InputBlurUnsigned = forwardRef(
         return;
       }
       applyUnsigned(reactNode);
-    }, [])
+    }, []);
 
+    if (Platform.OS === 'android') {
+      useEffect(() => {
+        if (inputRef.current) {
+          const nodeHandle = findNodeHandle(inputRef.current);
+          console.log('secureTextEntry', secureTextEntry);
+          ReactNativeUnsignedInput.setSecureTextEntry(
+            nodeHandle,
+            secureTextEntry
+          );
+        }
+      }, [secureTextEntry]);
+    }
 
     return (
       <View style={styles.viewInput}>
@@ -128,6 +140,25 @@ const InputBlurUnsigned = forwardRef(
     );
   }
 );
+
+InputBlurUnsigned.defaultProps = {
+  secureTextEntry: false,
+  style: {},
+  multiline: false,
+  rightIcon: null,
+  leftIcon: null,
+  rightIconContainerStyle: {},
+  leftIconContainerStyle: {},
+  value: '',
+  defaultValue: '',
+  onChangeText: () => { },
+  placeholder: '',
+  placeholderTextColor: '#a9a9a9',
+  onGetValue: () => { },
+  onFocus: () => { },
+  onBlur: () => { },
+  backgroundInput: null,
+};
 
 export default InputBlurUnsigned;
 

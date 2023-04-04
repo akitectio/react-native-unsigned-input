@@ -6,7 +6,6 @@ import android.widget.EditText
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.UIManagerModule
 
@@ -28,8 +27,24 @@ class ReactNativeUnsignedInputModule(private val reactContext: ReactApplicationC
       val listener = UnsignedTextWatcher(editText)
       listeners.set(getKey(reactNode), listener)
       editText.addTextChangedListener(listener)
-      // Add this line to set the input type to password
-      editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
+      
+    }
+  }
+
+  @ReactMethod
+  fun setSecureTextEntry(reactNode: Int, secureTextEntry: Boolean) {
+    val uiManager = reactContext.getNativeModule(UIManagerModule::class.java)!!
+
+    uiManager.addUIBlock { viewRegistry ->
+      val editText = viewRegistry.resolveView(reactNode) as EditText
+      if (secureTextEntry) {
+        editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
+      } else {
+        editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+      }
+      // Set the cursor to the end of the text
+      val textLength = editText.text.length
+      editText.setSelection(textLength)
     }
   }
 
