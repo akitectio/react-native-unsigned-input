@@ -27,7 +27,7 @@ class ReactNativeUnsignedInputModule(private val reactContext: ReactApplicationC
       val listener = UnsignedTextWatcher(editText)
       listeners.set(getKey(reactNode), listener)
       editText.addTextChangedListener(listener)
-      
+
     }
   }
 
@@ -37,10 +37,10 @@ class ReactNativeUnsignedInputModule(private val reactContext: ReactApplicationC
 
     uiManager.addUIBlock { viewRegistry ->
       val editText = viewRegistry.resolveView(reactNode) as EditText
-      if (secureTextEntry) {
-        editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
-      } else {
         editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+      } else {
+        editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
       }
       // Set the cursor to the end of the text
       val textLength = editText.text.length
